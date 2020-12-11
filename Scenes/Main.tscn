@@ -11,10 +11,12 @@ script = ExtResource( 3 )
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
 
 [node name="BuildableZone" parent="." instance=ExtResource( 4 )]
-position = Vector2( 96, 96 )
+position = Vector2( 160, 120 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 537.065, 363.392 )
 
 [node name="StartPosition" type="Position2D" parent="."]
-[connection signal="hit" from="Player" to="BuildableZone" method="_on_Player_hit"]
+[connection signal="canBuild" from="BuildableZone" to="Player" method="_on_BuildableZone_canBuild"]
+[connection signal="leftBuildZone" from="BuildableZone" to="Player" method="_on_BuildableZone_leftBuildZone"]
+[connection signal="build" from="Player" to="BuildableZone" method="_on_Player_build"]

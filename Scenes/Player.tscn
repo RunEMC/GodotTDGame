@@ -41,5 +41,15 @@ animation = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 31.1478, 50.4972 )
 shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -16.3878
+margin_top = 6.8264
+margin_right = 83.6122
+margin_bottom = 20.8264
+text = "Press e to build"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]

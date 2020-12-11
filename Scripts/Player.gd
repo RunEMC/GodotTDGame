@@ -1,12 +1,13 @@
 extends Area2D
 signal hit
-
+signal build(tower)
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 export var speed = 250
 var screen_size
+var inBuildZone = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#	Movement
 	var velocity = Vector2()
 	
 	if Input.is_action_pressed("ui_right"):
@@ -40,7 +42,11 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-#	pass
+	
+	#	Build Zone Detection
+	$Label.visible = inBuildZone
+	if Input.is_action_pressed("ui_build"):
+		emit_signal("build", 0)
 
 func start(pos):
 	position = pos
@@ -48,7 +54,7 @@ func start(pos):
 
 func _on_Player_body_entered(body):
 	emit_signal("hit")
-	$CollisionShape2D.set_deferred("disabled", true)
+#	$CollisionShape2D.set_deferred("disabled", true)
 	print_debug("collided with")
 	print_debug(body)
 #	pass # Replace with function body.
@@ -57,5 +63,15 @@ func _on_Player_area_entered(area):
 	emit_signal("hit")
 #	$CollisionShape2D.set_deferred("disabled", true)
 	print_debug("collided with")
-	print_debug(area.name)
+	print_debug(area)
 #	pass # Replace with function body.
+
+
+func _on_BuildableZone_canBuild():
+	inBuildZone = true
+	pass # Replace with function body.
+
+
+func _on_BuildableZone_leftBuildZone():
+	inBuildZone = false
+	pass # Replace with function body.

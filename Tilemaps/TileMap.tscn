@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Sprites/TDTileSet/towerDefense_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/TileMap.gd" type="Script" id=2]
@@ -106,9 +106,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 6/shapes = [  ]
 6/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 28, 28 )
-
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource( 2 )
 format = 1
@@ -117,9 +114,3 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 287.569, 224.586 )
-shape = SubResource( 3 )

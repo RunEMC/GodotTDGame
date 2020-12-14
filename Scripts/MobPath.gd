@@ -25,3 +25,7 @@ func _process(delta):
 
 func reached_end():
 	queue_free()
+
+
+func _on_Area2D_area_entered(area):
+	pass # Replace with function body.

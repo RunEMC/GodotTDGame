@@ -1,7 +1,7 @@
 extends PathFollow2D
 
 var speed = 100
-var hp = 10
+var hp = 2
 
 
 # Declare member variables here. Examples:
@@ -28,4 +28,9 @@ func reached_end():
 
 
 func _on_Area2D_area_entered(area):
+	if area.is_in_group("shot"):
+		area.queue_free()
+		hp -= 1
+		if hp <= 0:
+			queue_free()
 	pass # Replace with function body.

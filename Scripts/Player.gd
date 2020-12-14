@@ -66,12 +66,9 @@ func _on_Player_area_entered(area):
 	print_debug(area)
 #	pass # Replace with function body.
 
-
-func _on_BuildableZone_canBuild():
+func _on_Tower_canBuild():
 	inBuildZone = true
-	pass # Replace with function body.
 
 
-func _on_BuildableZone_leftBuildZone():
+func _on_Tower_leftBuildZone():
 	inBuildZone = false
-	pass # Replace with function body.
